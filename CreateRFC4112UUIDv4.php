@@ -3,8 +3,8 @@
 function createUUIDv4Variant1() {
     $randomizer = new \Random\Randomizer();
     $randomHex = $randomizer->getBytesFromString('0123456789abcdef', 32);
-    $randomHex[12] = 4;
-    $randomHex[16] = $randomizer->getBytesFromString('89ab', 1);
+    $randomHex[12] = 4; // // UUID v4 であることを示す
+    $randomHex[16] = $randomizer->getBytesFromString('89ab', 1); // // RFC 4122 に基づくUUIDであると示すバリアントを設定
 
     return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split($randomHex, 4));
 }

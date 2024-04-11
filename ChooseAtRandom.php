@@ -17,7 +17,13 @@ echo '本日ファシリをする方はこの方！！：' . $name . PHP_EOL;
 $persons = ['名前1', '名前2', '名前3', '名前4', ];
 echo 'LTの発表順はこちら！：' . implode(', ', $randomizer->shuffleArray($persons)) . PHP_EOL;
 
-// 順番ぎめ（ドキドキver）
-$persons = ['名前1', '名前2', '名前3', '名前4', ];
-$persons = $randomizer->shuffleArray($persons);
-echo '次の発表者はこの人だ！：' . array_shift($persons) . PHP_EOL;
+// ビンゴマシン代わり
+$numbers = range(1, 75);
+$numbers = $randomizer->shuffleArray($numbers);
+function pickNumber(array &$numbers): void
+{
+    echo 'ビンゴを回します。ガラガラ...' . PHP_EOL;
+    sleep(3);
+    echo 'ただいま出てきた番号は: ' . array_shift($numbers) . PHP_EOL;
+}
+pickNumber($numbers);
